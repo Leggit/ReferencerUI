@@ -1,0 +1,34 @@
+<section class="container m-auto p-3 col-12 col-md-8 col-lg-6">
+
+    <!-- Reference Type select form-->
+    <form class="row mb-3">
+        <mat-form-field class="col-10 ref-type">
+            <mat-label>Reference Type</mat-label>
+            <input type="text" placeholder="start typing..." matInput [formControl]="typeSelection"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let type of filteredRefTypes | async" [value]="type">
+                    {{type}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <div class="col-2 d-flex">
+            <button mat-raised-button class="m-auto full-width">Go</button>
+        </div>
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <!-- Reference input form-->
+    <form>
+        Input placeholder
+    </form>
+
+    <mat-divider></mat-divider>
+
+    <!-- Reference output -->
+    <div>
+        Output placeholder
+    </div>
+
+</section>
