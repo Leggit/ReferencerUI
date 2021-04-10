@@ -25,7 +25,7 @@ import { FieldComponent } from './components/ref-form/field/field.component';
     ReferenceOptionComponent,
     RefOutputComponent,
     RefFormComponent,
-    FieldComponent
+    FieldComponent,
   ],
   imports: [
     BrowserModule,
