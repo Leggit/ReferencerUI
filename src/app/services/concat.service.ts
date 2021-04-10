@@ -10,7 +10,6 @@ export class ConcatService {
 
   genarateReference(refDetails: RefModel) {
     var output: string = refDetails.format;
-    console.log(refDetails.fields);
     
     refDetails.fields.forEach(field => {
 

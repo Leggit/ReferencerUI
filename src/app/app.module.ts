@@ -17,6 +17,8 @@ import { ReferenceOptionComponent } from './components/reference-option/referenc
 import { RefOutputComponent } from './components/ref-output/ref-output.component';
 import { RefFormComponent } from './components/ref-form/ref-form.component';
 import { FieldComponent } from './components/ref-form/field/field.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { FieldComponent } from './components/ref-form/field/field.component';
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
+    ClipboardModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
