@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, startWith } from "rxjs/operators"
 import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
 import { RefModel } from 'src/app/models/ref.model';
+import { ConcatService } from 'src/app/services/concat.service';
 import { ReferenceService } from 'src/app/services/reference.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class ReferenceHomeComponent implements OnInit {
   refDetails!: RefModel;
   refOutput = "";
 
-  constructor(public referenceService: ReferenceService) { 
+  constructor(public referenceService: ReferenceService, private concatService: ConcatService) { 
   }
 
   ngOnInit(): void {
@@ -33,6 +34,10 @@ export class ReferenceHomeComponent implements OnInit {
       (data: RefModel) => this.refDetails = data,
       (err: any) => console.log(err)
     );
+  }
+
+  genarateReference(refDetails: RefModel) {
+    this.refOutput = this.concatService.genarateReference(refDetails);
   }
 }
 

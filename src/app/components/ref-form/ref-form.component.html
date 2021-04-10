@@ -1,7 +1,7 @@
 <section class="p-3 border bg-dark">
     <h2 class="col-12">Input the details</h2>
 
-    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <form (ngSubmit)="onSubmit($event)" [formGroup]="form">
         <div *ngFor="let field of refDetails.fields">
             <app-field [field]="field" [form]="form"></app-field>
         </div>

@@ -9,9 +9,8 @@
     </p>
 
     <section *ngIf="refDetails">
-        <app-ref-input [refDetails]="refDetails"></app-ref-input>
+        <app-ref-form [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-ref-form>
     </section>
 
     <app-ref-output [refOutput]="refOutput"></app-ref-output>
-
 </section>

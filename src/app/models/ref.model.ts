@@ -6,6 +6,7 @@ export interface RefModel {
 }
 
 export interface Field {
+    value?: string;
     name: string;
     label: string;
     type: string;

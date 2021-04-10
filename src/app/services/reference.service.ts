@@ -44,7 +44,7 @@ export class ReferenceService {
         { name: "Url", label: "Available At", type: "text", required: true },
         { name: "AccessedDate", label: "Accessed", type: "date", required: true }
       ],
-      format: "{Authors}, ({Year}) '{ArticleTitle}', <em>{JournalTitle}</em>, {Volume}{?({Issue})}, Available At: {Url} (Accessed: {AccessedDate})"
+      format: "{Authors}, ({Year}) '{ArticleTitle}', <em>{JournalTitle}</em>, {Volume}{?Issue({Issue})Issue?}, Available At: {Url} (Accessed: {AccessedDate})"
     });
     //return this.http.get<RefModel>(environment.apiUrl + "/request/reference/" + "uuid")
   }
