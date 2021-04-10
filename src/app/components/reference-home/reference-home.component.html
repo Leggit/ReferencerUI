@@ -8,10 +8,10 @@
         Could not retrieve Reference Options from the server
     </p>
 
-    <mat-divider></mat-divider>
-    <app-ref-input></app-ref-input>
+    <section *ngIf="refDetails">
+        <app-ref-input [refDetails]="refDetails"></app-ref-input>
+    </section>
 
-    <mat-divider></mat-divider>
     <app-ref-output [refOutput]="refOutput"></app-ref-output>
 
 </section>

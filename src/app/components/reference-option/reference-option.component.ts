@@ -27,7 +27,6 @@ export class ReferenceOptionComponent implements OnInit {
     );
 
     this.optionSelect.setValue(this.refOptions[0].name);
-    this.emitSelection(this.refOptions[0].name);
   }
 
   emitSelection(option: string): void {

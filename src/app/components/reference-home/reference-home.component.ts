@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from "rxjs/operators"
 import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
+import { RefModel } from 'src/app/models/ref.model';
 import { ReferenceService } from 'src/app/services/reference.service';
 
 @Component({
   selector: 'app-reference-form',
-  templateUrl: './reference-form.component.html',
-  styleUrls: ['./reference-form.component.css']
+  templateUrl: './reference-home.component.html',
+  styleUrls: ['./reference-home.component.css']
 })
-export class ReferenceFormComponent implements OnInit {
+export class ReferenceHomeComponent implements OnInit {
 
   refOptions: RefOption[] = [];
+  refDetails!: RefModel;
   refOutput = "";
 
   constructor(public referenceService: ReferenceService) { 
@@ -22,11 +24,15 @@ export class ReferenceFormComponent implements OnInit {
     this.referenceService.getRefOptions().subscribe(
       (data: RefOptions) => this.refOptions = data.options,
       (err: any) => console.log(err),
+      () => this.getReferenceDetails(this.refOptions[0])
     );
   }
 
   getReferenceDetails(selectedOption: RefOption) {
-    console.log(selectedOption)
+    this.referenceService.getRefDetails(selectedOption.uuid).subscribe(
+      (data: RefModel) => this.refDetails = data,
+      (err: any) => console.log(err)
+    );
   }
 }
 

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ReferenceFormComponent } from './components/reference-form/reference-form.component';
+import { ReferenceHomeComponent } from './components/reference-home/reference-home.component';
 
 const routes: Routes = [
-  { path: '', component: ReferenceFormComponent }
+  { path: '', component: ReferenceHomeComponent }
 ];
 
 @NgModule({
