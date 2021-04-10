@@ -12,7 +12,7 @@ export class RefOutputComponent {
   constructor() { }
 
   copyToClipboard(refOutput: string): void {
-    // Bit of a shame that the angular cdk copy and paste wasnt working with the em formatting
+    // Bit of a shame that the angular cdk copy and paste wasnt working with the <em> formatting
     // This may not work on safari but thats not the end of the world
     // Potentially a security problem?
     function listener(e: any) {
