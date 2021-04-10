@@ -1,21 +1,13 @@
 <section class="container m-auto p-3 col-12 col-md-8 col-lg-6">
 
     <!-- Reference Type select form-->
-    <form class="row mb-3">
-        <mat-form-field class="col-10 ref-type">
-            <mat-label>Reference Type</mat-label>
-            <input type="text" placeholder="start typing..." matInput [formControl]="optionSelect"
-                [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption [displayWith]="displayOption">
-                <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
-                    {{option.name}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        <div class="col-2 d-flex">
-            <button mat-raised-button class="m-auto full-width" [disabled]="!!!optionSelect.value.uuid">Go</button>
-        </div>
-    </form>
+    <app-reference-option *ngIf="refOptions.length > 0"
+        [refOptions]="refOptions" 
+        (optionSelected)="getReferenceDetails($event)">
+    </app-reference-option>
+    <p *ngIf="refOptions.length === 0" class="text-danger text-center">
+        Could not retrieve Reference Options from the server
+    </p>
 
     <mat-divider></mat-divider>
 

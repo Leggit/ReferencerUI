@@ -13,11 +13,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
+import { ReferenceOptionComponent } from './components/reference-option/reference-option.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReferenceFormComponent
+    ReferenceFormComponent,
+    ReferenceOptionComponent
   ],
   imports: [
     BrowserModule,

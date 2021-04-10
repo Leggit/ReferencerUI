@@ -1,0 +1,18 @@
+<form class="row d-flex mb-3" (submit)="emitSelection(optionSelect.value)">
+    <mat-form-field class="col-lg-10 col-md-10 ref-option">
+        <mat-label>Reference Type</mat-label>
+        <input type="text" placeholder="start typing..." matInput [formControl]="optionSelect" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
+            autoActiveFirstOption [displayWith]="displayOption">
+            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
+                {{option.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <div class="d-flex col-lg-2 col-md-2 col-12 justify-content-end">
+        <div class="mt-auto mb-auto">
+            <button mat-raised-button class="m-auto full-width"
+                [disabled]="!!!optionSelect.value.uuid">Go</button>
+        </div>
+    </div>
+</form>
