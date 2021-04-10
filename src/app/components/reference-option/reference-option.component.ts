@@ -15,7 +15,7 @@ export class ReferenceOptionComponent implements OnInit {
   @Input() refOptions: RefOption[] = [];
   filteredRefOptions!: Observable<RefOption[]>;
   optionSelect!: FormControl;
-  selectedOption?: RefOption;
+  invalidSelection = false;
 
   constructor() { }
 
@@ -29,8 +29,20 @@ export class ReferenceOptionComponent implements OnInit {
     this.emitSelection(this.refOptions[0])
   }
 
-  emitSelection(option: RefOption): void {
-    this.optionSelected.emit(option);
+  emitSelection(option: RefOption | string): void {
+    this.invalidSelection = false;
+
+    if(typeof option === "string") {
+      var selected = this.refOptions.filter(opt => opt.name.toLowerCase() === (option.toLowerCase()))
+      if(selected.length === 1) {
+        this.optionSelected.emit(selected[0])
+      } else {
+        this.invalidSelection = true;
+      }
+    }
+    else {
+      this.optionSelected.emit(option);
+    }
   }
 
   displayOption = (option: RefOption) => option.name;

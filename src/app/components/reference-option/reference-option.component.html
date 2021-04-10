@@ -1,7 +1,8 @@
 <form class="row d-flex mb-3" (submit)="emitSelection(optionSelect.value)">
     <mat-form-field class="col-lg-10 col-md-10 ref-option">
-        <mat-label>Reference Type</mat-label>
-        <input type="text" placeholder="start typing..." matInput [formControl]="optionSelect" [matAutocomplete]="auto">
+        <mat-label [ngClass]="invalidSelection ? 'text-danger' : 'text-success'">Reference Type</mat-label>
+        <mat-label class="text-danger" *ngIf="invalidSelection">&nbsp; - Please select a valid reference type</mat-label>
+        <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
             autoActiveFirstOption [displayWith]="displayOption">
             <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
@@ -9,10 +10,7 @@
             </mat-option>
         </mat-autocomplete>
     </mat-form-field>
-    <div class="d-flex col-lg-2 col-md-2 col-12 justify-content-end">
-        <div class="mt-auto mb-auto">
-            <button mat-raised-button class="m-auto full-width"
-                [disabled]="!!!optionSelect.value.uuid">Go</button>
-        </div>
+    <div class="d-flex col-lg-2 col-md-2 col-12 justify-content-end mt-auto mb-auto">
+        <button mat-raised-button color="accent" class="col-2 col-md-12 col-lg-12" [disabled]="!!!optionSelect.value">Go</button>
     </div>
 </form>
