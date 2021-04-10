@@ -7,10 +7,9 @@ import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
 @Component({
   selector: 'app-reference-option',
   templateUrl: './reference-option.component.html',
-  styleUrls: ['./reference-option.component.css']
+  styleUrls: ['./reference-option.component.css'],
 })
 export class ReferenceOptionComponent implements OnInit {
-
   @Output() optionSelected: EventEmitter<RefOption> = new EventEmitter();
   @Input() refOptions: RefOption[] = [];
   filteredRefOptions!: Observable<RefOption[]>;
@@ -21,33 +20,36 @@ export class ReferenceOptionComponent implements OnInit {
 
   ngOnInit(): void {
     this.optionSelect = new FormControl();
+
     this.filteredRefOptions = this.optionSelect.valueChanges.pipe(
-      startWith(""),
-      map(value => this.filterRefType(value.name ? value.name : value))
+      startWith(''),
+      map((value) => this.filterRefType(value.name ? value.name : value))
     );
-    this.optionSelect.setValue(this.refOptions[0])
-    this.emitSelection(this.refOptions[0])
+
+    this.optionSelect.setValue(this.refOptions[0].name);
+    this.emitSelection(this.refOptions[0].name);
   }
 
-  emitSelection(option: RefOption | string): void {
+  emitSelection(option: string): void {
     this.invalidSelection = false;
 
-    if(typeof option === "string") {
-      var selected = this.refOptions.filter(opt => opt.name.toLowerCase() === (option.toLowerCase()))
-      if(selected.length === 1) {
-        this.optionSelected.emit(selected[0])
-      } else {
-        this.invalidSelection = true;
-      }
+    // Filter down to the selected option
+    // If the data from the server has duplicates this method will be problematic
+    var selected = this.refOptions.filter(
+      (opt) => opt.name.toLowerCase() === option.toLowerCase()
+    );
+
+    if (selected.length === 1) {
+      this.optionSelected.emit(selected[0]);
+    } else {
+      this.invalidSelection = true;
     }
-    else {
-      this.optionSelected.emit(option);
-    }
+
   }
 
-  displayOption = (option: RefOption) => option.name;
-
   filterRefType(value: string): RefOption[] {
-    return this.refOptions.filter(option => option.name.toLowerCase().includes(value.toLowerCase()));
+    return this.refOptions.filter((option) =>
+      option.name.toLowerCase().includes(value.toLowerCase())
+    );
   }
 }

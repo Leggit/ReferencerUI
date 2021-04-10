@@ -4,8 +4,8 @@
         <mat-label class="text-danger" *ngIf="invalidSelection">&nbsp; - Please select a valid reference type</mat-label>
         <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
-            autoActiveFirstOption [displayWith]="displayOption">
-            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
+            autoActiveFirstOption>
+            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option.name">
                 {{option.name}}
             </mat-option>
         </mat-autocomplete>

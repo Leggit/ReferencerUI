@@ -1,6 +1,5 @@
 <section class="container m-auto p-3 col-12 col-md-10 col-lg-8">
 
-    <!-- Reference Type select form-->
     <app-reference-option *ngIf="refOptions.length > 0"
         [refOptions]="refOptions" 
         (optionSelected)="getReferenceDetails($event)">
@@ -10,22 +9,9 @@
     </p>
 
     <mat-divider></mat-divider>
-
-    <!-- Reference input form-->
-    <form>
-        Form
-    </form>
+    <app-ref-input></app-ref-input>
 
     <mat-divider></mat-divider>
-
-    <!-- Reference output -->
-    <section class="mt-3">
-        <h2 class="mb-0">Reference:</h2>
-        <div class="p-2 border">
-            <p class="ref-output">
-                {{refOutput}}
-            </p>
-        </div>
-    </section>
+    <app-ref-output [refOutput]="refOutput"></app-ref-output>
 
 </section>
