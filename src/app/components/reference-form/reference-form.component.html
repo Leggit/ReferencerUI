@@ -4,16 +4,16 @@
     <form class="row mb-3">
         <mat-form-field class="col-10 ref-type">
             <mat-label>Reference Type</mat-label>
-            <input type="text" placeholder="start typing..." matInput [formControl]="typeSelection"
+            <input type="text" placeholder="start typing..." matInput [formControl]="optionSelect"
                 [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let type of filteredRefTypes | async" [value]="type">
-                    {{type}}
+            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption [displayWith]="displayOption">
+                <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
+                    {{option.name}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
         <div class="col-2 d-flex">
-            <button mat-raised-button class="m-auto full-width">Go</button>
+            <button mat-raised-button class="m-auto full-width" [disabled]="!!!optionSelect.value.uuid">Go</button>
         </div>
     </form>
 
@@ -21,14 +21,19 @@
 
     <!-- Reference input form-->
     <form>
-        Input placeholder
+        Form
     </form>
 
     <mat-divider></mat-divider>
 
     <!-- Reference output -->
-    <div>
-        Output placeholder
-    </div>
+    <section class="mt-3">
+        <h2 class="mb-0">Reference:</h2>
+        <div class="p-2 border">
+            <p class="ref-output">
+                {{refOutput}}
+            </p>
+        </div>
+    </section>
 
 </section>
