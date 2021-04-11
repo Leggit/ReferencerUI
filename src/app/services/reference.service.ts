@@ -16,6 +16,7 @@ export class ReferenceService {
   constructor(private http: HttpClient) { }
 
   getRefOptions(): Observable<RefOptions> {
+    /*
     return of(
       {
         "key": "ReferenceOptions",
@@ -26,8 +27,8 @@ export class ReferenceService {
           { "uuid": "data3", "name": "data3" }
         ]
       }
-    );
-    //return this.http.get<RefOptions>(environment.apiUrl + "/request/reference");
+    );*/
+    return this.http.get<RefOptions>(environment.apiUrl + "/request/reference");
   }
 
   getRefDetails(uuid: string): Observable<RefModel> {

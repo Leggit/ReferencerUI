@@ -1,6 +1,6 @@
 <form class="row d-flex mb-3" (submit)="emitSelection(optionSelect.value)">
     <mat-form-field class="col-lg-10 col-md-10 ref-option">
-        <mat-label [ngClass]="invalidSelection ? 'text-danger' : 'text-success'">Reference Type</mat-label>
+        <mat-label [ngClass]="invalidSelection ? 'text-danger' : ''">Reference Type</mat-label>
         <mat-label class="text-danger" *ngIf="invalidSelection">&nbsp; - Please select a valid reference type</mat-label>
         <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"

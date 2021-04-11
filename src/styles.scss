@@ -1,0 +1,61 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/theming";
+@include mat-core();
+
+$mat-primary-scheme: (
+  100: #e1bee7,
+  500: #be0f34,
+  700: #7b1fa2,
+  contrast: (
+    100: rgba(0,0,0,0.87),
+    500: #ffffff,
+    700: #ffffff,
+  )
+);
+$mat-secondary-scheme: (
+  100: #e1bee7,
+  500: #3e3e3e,
+  700: #7b1fa2,
+  contrast: (
+    100: rgba(0,0,0,0.87),
+    500: #ffffff,
+    700: #ffffff,
+  )
+);
+$mat-accent-scheme: (
+  100: #ffe57f,
+  500: #0ac3ff,
+  700: #ffc400,
+  contrast: (
+    100: rgba(0,0,0,0.87),
+    500: rgba(0,0,0,0.87),
+    700: #ffffff,
+  )
+);
+
+$app-primary: mat-palette($mat-primary-scheme);
+$app-secondary: mat-palette($mat-secondary-scheme);
+$app-accent: mat-palette($mat-accent-scheme);
+$app-warn: mat-palette($mat-red);
+
+$dark-app-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $app-primary,
+      secondary: $app-secondary,
+      accent: $app-accent,
+      warn: $app-warn,
+    ),
+  )
+);
+
+@include angular-material-theme($dark-app-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
