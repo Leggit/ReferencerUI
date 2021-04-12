@@ -1,4 +1,4 @@
-export interface RefModel {
+export interface ReferenceModel {
     uuid: string;
     name: string;
     fields: Field[];

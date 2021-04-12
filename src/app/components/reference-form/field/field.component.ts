@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Field } from 'src/app/models/ref.model';
+import { Field } from 'src/app/models/reference.model';
 
 @Component({
   selector: 'app-field',

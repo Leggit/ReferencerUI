@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
+import { ReferenceOption, ReferenceOptions } from 'src/app/models/reference-option.model';
 
 @Component({
   selector: 'app-reference-option',
@@ -10,9 +10,9 @@ import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
   styleUrls: ['./reference-option.component.css'],
 })
 export class ReferenceOptionComponent implements OnInit {
-  @Output() optionSelected: EventEmitter<RefOption> = new EventEmitter();
-  @Input() refOptions: RefOption[] = [];
-  filteredRefOptions!: Observable<RefOption[]>;
+  @Output() optionSelected: EventEmitter<ReferenceOption> = new EventEmitter();
+  @Input() refOptions: ReferenceOption[] = [];
+  filteredRefOptions!: Observable<ReferenceOption[]>;
   optionSelect!: FormControl;
   invalidSelection = false;
 
@@ -46,7 +46,7 @@ export class ReferenceOptionComponent implements OnInit {
 
   }
 
-  filterRefType(value: string): RefOption[] {
+  filterRefType(value: string): ReferenceOption[] {
     return this.refOptions.filter((option) =>
       option.name.toLowerCase().includes(value.toLowerCase())
     );

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Field } from '../models/ref.model';
+import { Field } from '../models/reference.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class InputControlService {
+export class FormControlService {
 
   constructor() { }
 

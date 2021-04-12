@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { map, startWith } from "rxjs/operators"
-import { RefOption, RefOptions } from 'src/app/models/ref-option.model';
-import { RefModel } from 'src/app/models/ref.model';
+import { ReferenceOption, ReferenceOptions } from 'src/app/models/reference-option.model';
+import { ReferenceModel } from 'src/app/models/reference.model';
 import { ConcatService } from 'src/app/services/concat.service';
 import { ReferenceService } from 'src/app/services/reference.service';
 
@@ -14,8 +14,8 @@ import { ReferenceService } from 'src/app/services/reference.service';
 })
 export class ReferenceHomeComponent implements OnInit {
 
-  refOptions: RefOption[] = [];
-  refDetails!: RefModel;
+  refOptions: ReferenceOption[] = [];
+  refDetails!: ReferenceModel;
   refOutput = "";
 
   constructor(public referenceService: ReferenceService, private concatService: ConcatService) { 
@@ -23,20 +23,20 @@ export class ReferenceHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.referenceService.getRefOptions().subscribe(
-      (data: RefOptions) => this.refOptions = data.options,
+      (data: ReferenceOptions) => this.refOptions = data.options,
       (err: any) => console.log(err),
       () => this.getReferenceDetails(this.refOptions[0])
     );
   }
 
-  getReferenceDetails(selectedOption: RefOption) {
+  getReferenceDetails(selectedOption: ReferenceOption) {
     this.referenceService.getRefDetails(selectedOption.uuid).subscribe(
-      (data: RefModel) => this.refDetails = data,
+      (data: ReferenceModel) => this.refDetails = data,
       (err: any) => console.log(err)
     );
   }
 
-  genarateReference(refDetails: RefModel) {
+  genarateReference(refDetails: ReferenceModel) {
     this.refOutput = this.concatService.genarateReference(refDetails);
   }
 }

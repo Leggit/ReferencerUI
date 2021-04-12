@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { RefModel } from 'src/app/models/ref.model';
-import { InputControlService } from 'src/app/services/input-control.service';
+import { ReferenceModel } from 'src/app/models/reference.model';
+import { FormControlService } from 'src/app/services/form-control.service';
 
 @Component({
   selector: 'app-ref-form',
@@ -10,11 +10,11 @@ import { InputControlService } from 'src/app/services/input-control.service';
 })
 export class ReferenceFormComponent implements OnInit {
 
-  @Input() refDetails!: RefModel;
-  @Output() formSubmit: EventEmitter<RefModel> = new EventEmitter<RefModel>()
+  @Input() refDetails!: ReferenceModel;
+  @Output() formSubmit: EventEmitter<ReferenceModel> = new EventEmitter<ReferenceModel>()
   form!: FormGroup;
 
-  constructor(private inputControlService: InputControlService) { 
+  constructor(private inputControlService: FormControlService) { 
   }
 
   ngOnInit(): void {

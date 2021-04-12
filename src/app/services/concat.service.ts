@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RefModel } from '../models/ref.model';
+import { ReferenceModel } from '../models/reference.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class ConcatService {
 
   constructor() { }
 
-  genarateReference(refDetails: RefModel) {
+  genarateReference(refDetails: ReferenceModel) {
     var output: string = refDetails.format;
     
     refDetails.fields.forEach(field => {

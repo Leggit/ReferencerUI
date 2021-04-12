@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { RefOptions } from '../models/ref-option.model';
-import { RefModel } from '../models/ref.model';
+import { ReferenceOptions } from '../models/reference-option.model';
+import { ReferenceModel } from '../models/reference.model';
 
 /**
  * For sending and retrieving referencing data from the backend
@@ -15,7 +15,7 @@ export class ReferenceService {
 
   constructor(private http: HttpClient) { }
 
-  getRefOptions(): Observable<RefOptions> {
+  getRefOptions(): Observable<ReferenceOptions> {
     /*
     return of(
       {
@@ -28,10 +28,10 @@ export class ReferenceService {
         ]
       }
     );*/
-    return this.http.get<RefOptions>(environment.apiUrl + "/request/reference");
+    return this.http.get<ReferenceOptions>(environment.apiUrl + "/request/reference");
   }
 
-  getRefDetails(uuid: string): Observable<RefModel> {
+  getRefDetails(uuid: string): Observable<ReferenceModel> {
     return of({
       uuid: "123",
       name: "Journal article (printed)",
