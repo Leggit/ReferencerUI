@@ -34,7 +34,6 @@ $mat-accent-scheme: (
 );
 
 $app-primary: mat-palette($mat-primary-scheme);
-$app-secondary: mat-palette($mat-secondary-scheme);
 $app-accent: mat-palette($mat-accent-scheme);
 $app-warn: mat-palette($mat-red);
 
@@ -42,7 +41,6 @@ $dark-app-theme: mat-dark-theme(
   (
     color: (
       primary: $app-primary,
-      secondary: $app-secondary,
       accent: $app-accent,
       warn: $app-warn,
     ),

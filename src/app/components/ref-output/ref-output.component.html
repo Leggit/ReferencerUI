@@ -1,7 +1,6 @@
 <section class="mt-3">
     <mat-label class="mb-0">Reference:</mat-label>
     <div class="p-2 border bg-white text-dark d-flex">
-        <!-- Angular should automatically sanitize refOutput and remove any script tags -->
         <p [innerHTML]="refOutput" class="ref-output"></p>
         <span class="ml-auto">
             <button mat-icon-button color="accent" (click)="copyToClipboard(refOutput)">

@@ -26,7 +26,7 @@ export class ReferenceOptionComponent implements OnInit {
       map((value) => this.filterRefType(value.name ? value.name : value))
     );
 
-    this.optionSelect.setValue(this.refOptions[0].name);
+    this.optionSelect.setValue(this.refOptions[0]?.name);
   }
 
   emitSelection(option: string): void {

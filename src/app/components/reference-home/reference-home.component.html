@@ -1,12 +1,9 @@
 <section class="container m-auto p-3 col-12 col-md-10 col-lg-8">
 
-    <app-reference-option *ngIf="refOptions.length > 0"
+    <app-reference-option 
         [refOptions]="refOptions" 
         (optionSelected)="getReferenceDetails($event)">
     </app-reference-option>
-    <p *ngIf="refOptions.length === 0" class="text-danger text-center">
-        Could not retrieve Reference Options from the server
-    </p>
 
     <section *ngIf="refDetails">
         <app-ref-form [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-ref-form>
