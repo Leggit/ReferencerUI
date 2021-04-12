@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ref-output',
-  templateUrl: './ref-output.component.html',
-  styleUrls: ['./ref-output.component.css']
+  templateUrl: './reference-output.component.html',
+  styleUrls: ['./reference-output.component.css']
 })
-export class RefOutputComponent {
+export class ReferenceOutputComponent {
 
   @Input() refOutput: string = "";
   

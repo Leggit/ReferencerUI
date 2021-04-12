@@ -14,9 +14,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { ReferenceOptionComponent } from './components/reference-option/reference-option.component';
-import { RefOutputComponent } from './components/ref-output/ref-output.component';
-import { RefFormComponent } from './components/ref-form/ref-form.component';
-import { FieldComponent } from './components/ref-form/field/field.component';
+import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
+import { ReferenceFormComponent } from './components/reference-form/reference-form.component';
+import { FieldComponent } from './components/reference-form/field/field.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -25,8 +25,8 @@ import {MatIconModule} from '@angular/material/icon';
     AppComponent,
     ReferenceHomeComponent,
     ReferenceOptionComponent,
-    RefOutputComponent,
-    RefFormComponent,
+    ReferenceOutputComponent,
+    ReferenceFormComponent,
     FieldComponent,
   ],
   imports: [

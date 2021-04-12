@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RefFormComponent } from './ref-form.component';
+import { ReferenceFormComponent } from './reference-form.component';
 
 describe('RefInputComponent', () => {
-  let component: RefFormComponent;
-  let fixture: ComponentFixture<RefFormComponent>;
+  let component: ReferenceFormComponent;
+  let fixture: ComponentFixture<ReferenceFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RefFormComponent ]
+      declarations: [ ReferenceFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RefFormComponent);
+    fixture = TestBed.createComponent(ReferenceFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

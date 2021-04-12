@@ -5,10 +5,10 @@ import { InputControlService } from 'src/app/services/input-control.service';
 
 @Component({
   selector: 'app-ref-form',
-  templateUrl: './ref-form.component.html',
-  styleUrls: ['./ref-form.component.css']
+  templateUrl: './reference-form.component.html',
+  styleUrls: ['./reference-form.component.css']
 })
-export class RefFormComponent implements OnInit {
+export class ReferenceFormComponent implements OnInit {
 
   @Input() refDetails!: RefModel;
   @Output() formSubmit: EventEmitter<RefModel> = new EventEmitter<RefModel>()
