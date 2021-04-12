@@ -14,11 +14,11 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import { ReferenceOptionComponent } from './components/reference-option/reference-option.component';
-import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
 import { ReferenceFormComponent } from './components/reference-form/reference-form.component';
 import { FieldComponent } from './components/reference-form/field/field.component';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatIconModule} from '@angular/material/icon';
+import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
 
 @NgModule({
   declarations: [
