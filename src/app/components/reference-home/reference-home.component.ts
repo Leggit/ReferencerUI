@@ -14,7 +14,6 @@ import { ReferenceService } from 'src/app/services/reference.service';
 })
 export class ReferenceHomeComponent implements OnInit {
 
-  refOptions: ReferenceOption[] = [];
   refDetails!: ReferenceModel;
   refOutput = "";
 
@@ -22,11 +21,6 @@ export class ReferenceHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.referenceService.getRefOptions().subscribe(
-      (data: ReferenceOptions) => this.refOptions = data.options,
-      (err: any) => console.log(err),
-      () => this.getReferenceDetails(this.refOptions[0])
-    );
   }
 
   getReferenceDetails(selectedOption: ReferenceOption) {
