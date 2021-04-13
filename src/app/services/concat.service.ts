@@ -17,7 +17,7 @@ export class ConcatService {
       if(field.name === "AccessedDate" && field.value) {
         var date = new Date(field.value);
         var month = date.toLocaleString('default', { month: 'long' });
-        field.value = `${date.getDay()} ${month} ${date.getFullYear()}`
+        field.value = `${date.getDate()} ${month} ${date.getFullYear()}`
       }
 
       if(field.value && field.required) {

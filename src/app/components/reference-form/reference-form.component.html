@@ -1,7 +1,7 @@
 <section class="p-3 shadow bg-dark">
     <h2 class="col-12">Reference details</h2>
 
-    <form (ngSubmit)="onSubmit($event)" [formGroup]="form">
+    <form (ngSubmit)="onSubmit($event)" [formGroup]="form" autocomplete="off">
         <div *ngFor="let field of refDetails.fields">
             <app-field [field]="field" [form]="form"></app-field>
         </div>
