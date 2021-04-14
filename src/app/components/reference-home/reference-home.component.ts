@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { map, startWith } from "rxjs/operators"
+import { Component, OnInit } from '@angular/core';
 import { ReferenceOption, ReferenceOptions } from 'src/app/models/reference-option.model';
 import { ReferenceModel } from 'src/app/models/reference.model';
 import { ConcatService } from 'src/app/services/concat.service';
@@ -14,19 +11,29 @@ import { ReferenceService } from 'src/app/services/reference.service';
 })
 export class ReferenceHomeComponent implements OnInit {
 
+  refOptions!: ReferenceOption[];
   refDetails!: ReferenceModel;
   refOutput = "";
 
-  constructor(public referenceService: ReferenceService, private concatService: ConcatService) { 
+  loading = false;
+
+  constructor(
+    private readonly referenceService: ReferenceService,
+    private readonly concatService: ConcatService,
+  ) { 
   }
 
   ngOnInit(): void {
+    this.referenceService.getRefOptions().subscribe(
+      (data: ReferenceOptions) => this.refOptions = data.options,
+      (err: any) => console.log(err),
+    )
   }
 
   getReferenceDetails(selectedOption: ReferenceOption) {
     this.referenceService.getRefDetails(selectedOption.uuid).subscribe(
       (data: ReferenceModel) => this.refDetails = data,
-      (err: any) => console.log(err)
+      (err: any) => console.log(err),
     );
   }
 

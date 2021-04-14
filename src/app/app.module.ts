@@ -19,6 +19,7 @@ import { FieldComponent } from './components/reference-form/field/field.componen
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatIconModule} from '@angular/material/icon';
 import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ReferenceOutputComponent } from './components/reference-output/referenc
     MatDividerModule,
     ClipboardModule,
     MatIconModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
