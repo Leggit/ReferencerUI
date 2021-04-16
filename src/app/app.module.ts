@@ -20,6 +20,7 @@ import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MatIconModule} from '@angular/material/icon';
 import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ReferenceOutputComponent,
     ReferenceFormComponent,
     FieldComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
