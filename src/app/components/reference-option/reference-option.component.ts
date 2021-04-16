@@ -45,7 +45,7 @@ export class ReferenceOptionComponent implements OnInit {
     this.invalidSelection = false;
 
     // If there are reference options with duplicate names this method will be problematic
-    const selected = this.refOptions.filter(
+    const selected = this.refOptions?.filter(
       (opt) => opt.name.toLowerCase() === option?.toLowerCase()
     );
 

@@ -5,7 +5,7 @@ import { ConcatService } from 'src/app/services/concat.service';
 import { ReferenceService } from 'src/app/services/reference.service';
 
 @Component({
-  selector: 'app-reference-form',
+  selector: 'app-reference-home',
   templateUrl: './reference-home.component.html',
   styleUrls: ['./reference-home.component.css']
 })

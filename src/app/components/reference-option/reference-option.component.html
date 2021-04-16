@@ -1,25 +1,21 @@
-<div class="col-12">
-    <form class="row p-3 mb-3 bg-dark shadow" (submit)="emitSelection(optionSelect.value)">
-        
-        <mat-form-field class="col-lg-10 col-md-10 col-12 ref-option" color="accent">
-            <mat-label [ngClass]="invalidSelection ? 'text-danger' : ''">Reference Type</mat-label>
-            <mat-label class="text-danger" *ngIf="invalidSelection">&nbsp; - Please make a valid selection</mat-label>
-            <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect"
-                [matAutocomplete]="auto" />
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
-                autoActiveFirstOption>
-                <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option.name">
-                    {{ option.name }}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
+<form class="row" (submit)="emitSelection(optionSelect.value)">
+    <mat-form-field class="col-lg-10 col-md-10 col-12 ref-option" color="accent">
+        <mat-label [ngClass]="invalidSelection ? 'text-danger' : ''">
+            Reference Type {{ invalidSelection ? ' - Please Make a valid selection' : '' }}
+        </mat-label>
+        <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect"
+            [matAutocomplete]="auto" />
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
+            autoActiveFirstOption>
+            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option.name">
+                {{ option.name }}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
 
-        <div class="d-flex col-lg-2 col-md-2 col-12 mt-auto mb-auto">
-            <button mat-raised-button color="accent" class="col-2 col-md-12 col-lg-12"
-                [disabled]="!!!optionSelect.value">
-                Go
-            </button>
-        </div>
-
-    </form>
-</div>
+    <div class="d-flex col-lg-2 col-md-2 col-12 mt-auto mb-auto">
+        <button mat-raised-button color="accent" class="col-2 col-md-12 col-lg-12" [disabled]="!!!optionSelect.value">
+            Go
+        </button>
+    </div>
+</form>

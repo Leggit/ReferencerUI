@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-ref-output',
+  selector: 'app-reference-output',
   templateUrl: './reference-output.component.html',
   styleUrls: ['./reference-output.component.css']
 })

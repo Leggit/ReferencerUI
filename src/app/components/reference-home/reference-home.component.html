@@ -1,14 +1,18 @@
 <section class="container m-auto p-3 col-12 col-md-10 col-lg-8">
 
-    <app-reference-option
-        [refOptions]="refOptions" (optionSelected)="getReferenceDetails($event)">
-    </app-reference-option>
-
-    <section class="shadow bg-dark p-3">
-        <h2 class="col-12">Reference details</h2>
-        <mat-spinner *ngIf="!refDetails" class="m-auto"></mat-spinner>
-        <app-ref-form *ngIf="refDetails" [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-ref-form>
+    <section class="shadow bg-dark p-3 mb-3 col-12">
+        <app-reference-option
+            [refOptions]="refOptions" (optionSelected)="getReferenceDetails($event)">
+        </app-reference-option>
     </section>
 
-    <app-ref-output [refOutput]="refOutput"></app-ref-output>
+    <section class="shadow bg-dark p-3 mb-3 col-12">
+        <h2 class="col-12">Reference details</h2>
+        <mat-spinner *ngIf="!refDetails" class="m-auto"></mat-spinner>
+        <app-reference-form *ngIf="refDetails" [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-reference-form>
+    </section>
+
+    <section>
+        <app-reference-output [refOutput]="refOutput"></app-reference-output>
+    </section>
 </section>

@@ -4,7 +4,7 @@ import { ReferenceModel } from 'src/app/models/reference.model';
 import { FormControlService } from 'src/app/services/form-control.service';
 
 @Component({
-  selector: 'app-ref-form',
+  selector: 'app-reference-form',
   templateUrl: './reference-form.component.html',
   styleUrls: ['./reference-form.component.css']
 })

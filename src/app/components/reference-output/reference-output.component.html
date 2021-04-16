@@ -1,11 +1,7 @@
-<section class="mt-3">
-    <mat-label class="mb-0">Reference:</mat-label>
-    <div class="p-2 border bg-white text-dark d-flex">
-        <p [innerHTML]="refOutput" class="ref-output"></p>
-        <span class="ml-auto">
-            <button mat-icon-button color="accent" (click)="copyToClipboard(refOutput)">
-                <mat-icon alt="Copy">content_copy</mat-icon>
-            </button>
-        </span>
-    </div>
-</section>
+<mat-label class="mb-0">Reference:</mat-label>
+<div class="p-2 border bg-white text-dark d-flex">
+    <p [innerHTML]="refOutput" class="ref-output"></p>
+    <button class="ml-auto" mat-icon-button color="accent" (click)="copyToClipboard(refOutput)">
+        <mat-icon aria-label="Copy to clipboard">content_copy</mat-icon>
+    </button>
+</div>
