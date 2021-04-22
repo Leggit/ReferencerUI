@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReferenceModel } from '../models/reference.model';
+import { IReference } from '../models/reference.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,32 +8,43 @@ export class ConcatService {
 
   constructor() { }
 
-  genarateReference(refDetails: ReferenceModel) {
-    var output: string = refDetails.format;
-    
-    refDetails.fields.forEach(field => {
+  genarateReference(reference: IReference) {
+    var referenceText: string = "";
 
-      // Put date in the right format
-      if(field.name === "AccessedDate" && field.value) {
-        var date = new Date(field.value);
-        var month = date.toLocaleString('default', { month: 'long' });
-        field.value = `${date.getDate()} ${month} ${date.getFullYear()}`
+    reference.fields.forEach((field) => {
+      var formattedText = "";
+
+      if(!field.required && !field.value) {
+        return;
       }
 
-      if(field.value && field.required) {
-        output = output.replace(`{${field.name}}`, field.value)
-      } else if(field.value && !field.required) {
-        output = output.replace(`{?${field.name}`, "")
-        output = output.replace(`{${field.name}}`, field.value)
-        output = output.replace(`${field.name}?}`, "")
-      } else if(!field.value && !field.required) {
-        output = output.replace(new RegExp(`\\{\\?${field.name}[\\s\\S]*${field.name}\\?\\}`), "")
-      } else {
-        throw new Error("Field to genarate reference because of invalid field: " + JSON.stringify(field));
+      if(field.dateFormat && field.value) {
+        const date = new Date(field.value)
+
+        switch(field.dateFormat) {
+          case "ddMMyyyy":
+            field.value = date.toLocaleString();
+            break;
+          case "ddMMMM":
+            field.value = `${date.getDate()} ${date.toLocaleString('default', { month: 'long' })}`
+            break;
+          case "ddMMMMyyyy":
+            field.value = `${date.getDate()} ${date.toLocaleString('default', { month: 'long' })} ${date.getFullYear()}`
+            break;
+          default:
+            throw new Error("Invalid date format: " + field.dateFormat)
+        }
       }
 
-    })
+      formattedText = (field.prefix ? field.prefix : "") + (field.value ? field.value : "") + (field.suffix ? field.suffix : "");
 
-    return output;
+      if(field.italic) {
+        formattedText = "<em>" + formattedText + "</em>";
+      }
+
+      referenceText = referenceText + (formattedText ? formattedText : "")
+    });
+
+    return referenceText;
   }
 }

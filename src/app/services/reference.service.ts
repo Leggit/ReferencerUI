@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ReferenceOptions } from '../models/reference-option.model';
-import { ReferenceModel } from '../models/reference.model';
+import { IReference } from '../models/reference.model';
 
 /**
  * For sending and retrieving referencing data from the backend
@@ -31,21 +31,53 @@ export class ReferenceService {
     return this.http.get<ReferenceOptions>(environment.apiUrl + "/request/reference");
   }
 
-  getRefDetails(uuid: string): Observable<ReferenceModel> {
+  getRefDetails(uuid: string): Observable<IReference> {
     return of({
-      uuid: "123",
-      name: "Journal article (printed)",
-      fields: [
-        { name: "Authors", label: "Authors", type: "text", required: true },
-        { name: "Year", label: "Year of publication", type: "number", required: true },
-        { name: "ArticleTitle", label: "Title Of Article", type: "text", required: true },
-        { name: "JournalTitle", label: "Title of Journal", type: "text", required: true },
-        { name: "Volume", label: "Volume Number", type: "number", required: true },
-        { name: "Issue", label: "Issue Number", type: "number", required: false },
-        { name: "Url", label: "Available At", type: "text", required: true },
-        { name: "AccessedDate", label: "Accessed", type: "date", required: true }
+      "name": "Web pages with no authors ",
+      "fields": [
+        {
+          "uuid": "1",
+          "label": "Title of Internet site (in italics)",
+          "type": "text",
+          "placeholder": "Online Abertillery",
+          "prefix": "",
+          "suffix": "  ",
+          "italic": true,
+          "required": true
+        },
+        {
+          "uuid": "2",
+          "label": "Year that the site was published/last updated (in round brackets)",
+          "type": "number",
+          "placeholder": "2020",
+          "prefix": "(",
+          "suffix": ") ",
+          "italic": false,
+          "required": true
+        },
+        {
+          "uuid": "3",
+          "label": "Available at: URL",
+          "type": "url",
+          "placeholder": "https://google.com",
+          "prefix": "Available at: ",
+          "suffix": " ",
+          "italic": false,
+          "required": true
+        },
+        {
+          "uuid": "4",
+          "label": "(Accessed: date)",
+          "type": "date",
+          "placeholder": "(Accessed: 19 July 2010).",
+          "prefix": "(Accessed: ",
+          "suffix": ").",
+          "italic": false,
+          "required": true,
+          "dateFormat": "ddMMMMyyyy"
+        }
       ],
-      format: "{Authors}, ({Year}) '{ArticleTitle}', <em>{JournalTitle}</em>, {Volume}{?Issue({Issue})Issue?}, Available At: {Url} (Accessed: {AccessedDate})"
+      "example": "<em>Online Abertillery</em> (2010) Available at: http://www.abertillery.net/tales_ghost.html (Accessed: 19 July 2010)."
     });
     //return this.http.get<RefModel>(environment.apiUrl + "/request/reference/" + "uuid")
   }

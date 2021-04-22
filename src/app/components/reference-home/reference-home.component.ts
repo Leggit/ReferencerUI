@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReferenceOption, ReferenceOptions } from 'src/app/models/reference-option.model';
-import { ReferenceModel } from 'src/app/models/reference.model';
+import { IReference } from 'src/app/models/reference.model';
 import { ConcatService } from 'src/app/services/concat.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { ReferenceService } from 'src/app/services/reference.service';
@@ -13,7 +13,7 @@ import { ReferenceService } from 'src/app/services/reference.service';
 export class ReferenceHomeComponent implements OnInit {
 
   refOptions!: ReferenceOption[];
-  refDetails!: ReferenceModel;
+  refDetails!: IReference;
   refOutput = "";
 
   constructor(
@@ -35,7 +35,7 @@ export class ReferenceHomeComponent implements OnInit {
 
   getReferenceDetails(selectedOption: ReferenceOption) {
     this.referenceService.getRefDetails(selectedOption.uuid).subscribe(
-      (data: ReferenceModel) => this.refDetails = data,
+      (data: IReference) => this.refDetails = data,
       (err: any) => {
         this.errorService.showError(err.message);
         console.log(err);
@@ -43,7 +43,7 @@ export class ReferenceHomeComponent implements OnInit {
     );
   }
 
-  genarateReference(refDetails: ReferenceModel) {
+  genarateReference(refDetails: IReference) {
     this.refOutput = this.concatService.genarateReference(refDetails);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Field } from 'src/app/models/reference.model';
+import { IField } from 'src/app/models/reference.model';
 
 @Component({
   selector: 'app-field',
@@ -9,9 +9,9 @@ import { Field } from 'src/app/models/reference.model';
 })
 export class FieldComponent implements OnInit {
 
-  @Input() field!: Field;
+  @Input() field!: IField;
   @Input() form!: FormGroup;
-  get isValid() { return this.form.controls[this.field.name].valid; }
+  get isValid() { return this.form.controls[this.field.uuid].valid; }
 
   constructor() { }
 
@@ -23,7 +23,7 @@ export class FieldComponent implements OnInit {
     if(this.field.type.toLocaleLowerCase() === "date") {
       var today = new Date();
       var value = today.toISOString().split('T')[0];
-      this.form.controls[this.field.name].setValue(value)
+      this.form.controls[this.field.uuid].setValue(value)
     }
   }
 }

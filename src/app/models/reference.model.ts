@@ -1,14 +1,19 @@
-export interface ReferenceModel {
-    uuid: string;
+export interface IReference {
+    uuid?: string;
     name: string;
-    fields: Field[];
-    format: string;
+    fields: IField[];
+    example: string;
 }
 
-export interface Field {
+export interface IField {
+    uuid: string;
     value?: string;
-    name: string;
     label: string;
+    placeholder: string;
+    prefix: string;
+    suffix: string;
     type: string;
+    dateFormat?: string;
     required: boolean;
+    italic: boolean;
 }

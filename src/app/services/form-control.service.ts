@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Field } from '../models/reference.model';
+import { IField } from '../models/reference.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +9,11 @@ export class FormControlService {
 
   constructor() { }
 
-  toFormGroup(fields: Field[]): FormGroup {
+  toFormGroup(fields: IField[]): FormGroup {
     const group: any = [];
 
     fields.forEach(field => {
-      group[field.name] = field.required ?
+      group[field.uuid] = field.required ?
         new FormControl("", Validators.required)
         : new FormControl("")
     });

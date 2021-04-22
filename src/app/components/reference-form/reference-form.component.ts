@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { ReferenceModel } from 'src/app/models/reference.model';
+import { IField, IReference } from 'src/app/models/reference.model';
 import { FormControlService } from 'src/app/services/form-control.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { FormControlService } from 'src/app/services/form-control.service';
 })
 export class ReferenceFormComponent implements OnInit {
 
-  @Input() refDetails!: ReferenceModel;
-  @Output() formSubmit: EventEmitter<ReferenceModel> = new EventEmitter<ReferenceModel>()
+  @Input() refDetails!: IReference;
+  @Output() formSubmit: EventEmitter<IReference> = new EventEmitter<IReference>()
   form!: FormGroup;
 
   constructor(private inputControlService: FormControlService) { 
@@ -24,7 +24,7 @@ export class ReferenceFormComponent implements OnInit {
   onSubmit(event: any) {
     event.preventDefault();
     // Push the form values onto the ref details object
-    this.refDetails.fields.map(field => field.value = this.form.getRawValue()[field.name])
+    this.refDetails.fields.map((field: IField) => field.value = this.form.getRawValue()[field.uuid])
     this.formSubmit.emit(this.refDetails);
   }
 
