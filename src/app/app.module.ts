@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ErrorComponent } from './components/error/error.component';
+import { ReferenceExampleComponent } from './components/reference-example/reference-example.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ErrorComponent } from './components/error/error.component';
     ReferenceFormComponent,
     FieldComponent,
     ErrorComponent,
+    ReferenceExampleComponent
   ],
   imports: [
     BrowserModule,

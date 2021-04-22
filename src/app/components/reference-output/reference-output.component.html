@@ -1,6 +1,6 @@
-<mat-label>Reference:</mat-label>
+<mat-label class="h6">Reference:</mat-label>
 <div class="p-2 border bg-white text-dark d-flex">
-    <p [innerHTML]="refOutput" class="ref-output"></p>
+    <p [innerHTML]="refOutput" class="ref-output user-select-all"></p>
     <button class="ml-auto" mat-icon-button color="accent" (click)="copyToClipboard(refOutput)">
         <mat-icon aria-label="Copy to clipboard">content_copy</mat-icon>
     </button>

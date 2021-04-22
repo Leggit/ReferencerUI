@@ -12,7 +12,9 @@
         <app-reference-form *ngIf="refDetails" [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-reference-form>
     </section>
 
-    <section>
+    <section class="shadow bg-dark p-3 mb-3 col-12">
         <app-reference-output [refOutput]="refOutput"></app-reference-output>
+        <br>
+        <app-reference-example [example]="refDetails.example"></app-reference-example>
     </section>
 </section>
