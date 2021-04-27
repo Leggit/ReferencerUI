@@ -1,8 +1,8 @@
-<form (ngSubmit)="onSubmit($event)" [formGroup]="form" autocomplete="off">
+<form [formGroup]="form" autocomplete="off">
     <app-field *ngFor="let field of refDetails.fields" [field]="field" [form]="form"></app-field>
 
     <div class="mb-2 col-12">
-        <button color="accent" mat-raised-button type="submit" [disabled]="!form.valid" class="mr-2">Go</button>
+        <button [color]="form.valid ? 'accent' : ''" mat-raised-button (click)="onSubmit($event)" class="mr-2">Go</button>
         <button color="warn" mat-raised-button type="reset">Clear</button>
     </div>
 </form>

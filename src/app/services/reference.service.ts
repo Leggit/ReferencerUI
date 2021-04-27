@@ -36,7 +36,7 @@ export class ReferenceService {
       "name": "Web pages with no authors ",
       "fields": [
         {
-          "uuid": "1",
+          "uuid": "1", 
           "label": "Title of Internet site (in italics)",
           "type": "text",
           "placeholder": "Online Abertillery",

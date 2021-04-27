@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class ReferenceOutputComponent {
 
   @Input() refOutput: string = "";
+  @Input() example?: string = "";
   
   constructor() { }
 

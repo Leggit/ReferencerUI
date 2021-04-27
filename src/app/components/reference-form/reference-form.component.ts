@@ -23,9 +23,14 @@ export class ReferenceFormComponent implements OnInit {
 
   onSubmit(event: any) {
     event.preventDefault();
-    // Push the form values onto the ref details object
-    this.refDetails.fields.map((field: IField) => field.value = this.form.getRawValue()[field.uuid])
-    this.formSubmit.emit(this.refDetails);
+
+    if(this.form.valid) {
+      // Push the form values onto the ref details object
+      this.refDetails.fields.map((field: IField) => field.value = this.form.getRawValue()[field.uuid])
+      this.formSubmit.emit(this.refDetails);
+    } else {
+      this.form.markAllAsTouched()
+    }
   }
 
 }
