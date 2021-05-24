@@ -38,7 +38,6 @@ export class ReferenceOptionComponent implements OnInit {
     if (this.refOptions?.length > 0) {
       this.optionSelect.setValue(this.refOptions[0]?.name);
       this.optionSelect.updateValueAndValidity()
-      console.log("Hi")
       this.emitSelection(this.refOptions[0].name);
     }
   }

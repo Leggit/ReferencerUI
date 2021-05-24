@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ReferenceOption, ReferenceOptions } from 'src/app/models/reference-option.model';
+import { map } from 'rxjs/operators';
+import { ReferenceOption } from 'src/app/models/reference-option.model';
 import { IReference } from 'src/app/models/reference.model';
 import { ConcatService } from 'src/app/services/concat.service';
 import { ErrorService } from 'src/app/services/error.service';
@@ -25,11 +26,11 @@ export class ReferenceHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.referenceService.getRefOptions().subscribe(
-      (data: ReferenceOptions) => this.refOptions = data.options,
+      (data: any) => this.refOptions = data,
       (err: any) => {
         this.errorService.showError(err.message);
         console.log(err);
-      }
+      },
     )
   }
 
@@ -39,7 +40,8 @@ export class ReferenceHomeComponent implements OnInit {
       (err: any) => {
         this.errorService.showError(err.message);
         console.log(err);
-      } 
+      },
+      () => console.log(this.refDetails)
     );
   }
 
