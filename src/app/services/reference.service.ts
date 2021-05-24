@@ -41,6 +41,9 @@ export class ReferenceService {
     );
   }
 
+  /**
+   * Parses the field object from the backend so it doesnt have a nested options object
+   */
   private mapField(field: any) {
     const f: IField = {
       uuid: field.uuid,
