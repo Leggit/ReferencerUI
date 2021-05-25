@@ -29,37 +29,6 @@ export class ReferenceService {
   }
 
   getRefDetails(uuid: string): Observable<IReference> {
-    return this.http.get<IReference>(environment.apiUrl + "/request/reference/" + uuid).pipe(
-      map((response: any) => {
-        return {
-          uuid: response.uuid,
-          name: response.name,
-          example: response.example,
-          fields: response.fields.map((field: any) => this.mapField(field))
-        }
-      })
-    );
-  }
-
-  /**
-   * Parses the field object from the backend so it doesnt have a nested options object
-   */
-  private mapField(field: any) {
-    const f: IField = {
-      uuid: field.uuid,
-      italic: field.options.italic,
-      label: field.options.label,
-      placeholder: field.options.placeholder,
-      prefix: field.options.prefix,
-      suffix: field.options.suffix,
-      type: field.options.type,
-      required: field.options.required,
-    }
-
-    if(field.options?.dateFormat) {
-      f["dateFormat"] = field.options.dateFormat
-    }
-
-    return f
+    return this.http.get<IReference>(environment.apiUrl + "/request/reference/" + uuid)
   }
 }
