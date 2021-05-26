@@ -29,6 +29,11 @@ export class ReferenceService {
   }
 
   getRefDetails(uuid: string): Observable<IReference> {
-    return this.http.get<IReference>(environment.apiUrl + "/request/reference/" + uuid)
+    return this.http.get<IReference>(environment.apiUrl + "/request/reference/" + uuid).pipe(
+      map((response: IReference) => {
+        response.fields.sort((a, b) => a.position - b.position)
+        return response
+      })
+    )
   }
 }

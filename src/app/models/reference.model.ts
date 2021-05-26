@@ -7,6 +7,7 @@ export interface IReference {
 
 export interface IField {
     uuid: string;
+    position: number;
     value?: string;
     label: string;
     placeholder: string;

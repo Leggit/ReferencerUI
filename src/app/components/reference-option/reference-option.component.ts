@@ -47,8 +47,12 @@ export class ReferenceOptionComponent implements OnInit {
 
     if(typeof option === 'string') {
       const filtered = this.filterRefOptions(option)
+      const matches = this.refOptions.filter(opt => opt.name === option)
       
-      if(filtered.length === 1) {
+      if (matches.length === 1) {
+        this.optionSelected.emit(matches[0])
+      }
+      else if(filtered.length === 1) {
         this.optionSelected.emit(filtered[0])
       } else {
         this.invalidSelection = true
@@ -59,9 +63,13 @@ export class ReferenceOptionComponent implements OnInit {
   }
 
   filterRefOptions(value: string): ReferenceOption[] {
-    return this.refOptions?.filter((option) =>
+    const filtered = this.refOptions?.filter((option) =>
       option.name.toLowerCase().includes(value.toLowerCase())
     );
+
+    return filtered.sort(
+      (a, b) => a.name.length - b.name.length
+    )
   }
 
   displayFn(option: ReferenceOption): string {

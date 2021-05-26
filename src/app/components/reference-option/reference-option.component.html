@@ -11,6 +11,9 @@
                 {{ option.name }}
             </mat-option>
         </mat-autocomplete>
+        <button mat-button *ngIf="optionSelect.value" matSuffix mat-icon-button aria-label="Clear" (click)="optionSelect.setValue('')">
+            <mat-icon>close</mat-icon>
+        </button>
     </mat-form-field>
 
     <div class="d-flex col-lg-2 col-md-2 col-12 mt-auto mb-auto">
