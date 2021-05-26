@@ -6,8 +6,8 @@
         <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect"
             [matAutocomplete]="auto" />
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
-            autoActiveFirstOption>
-            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option.name">
+            autoActiveFirstOption [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
                 {{ option.name }}
             </mat-option>
         </mat-autocomplete>

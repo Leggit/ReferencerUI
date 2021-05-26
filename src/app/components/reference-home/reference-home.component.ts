@@ -14,7 +14,7 @@ import { ReferenceService } from 'src/app/services/reference.service';
 export class ReferenceHomeComponent implements OnInit {
 
   refOptions!: ReferenceOption[];
-  refDetails!: IReference;
+  refDetails?: IReference;
   refOutput = "";
 
   constructor(
@@ -35,13 +35,13 @@ export class ReferenceHomeComponent implements OnInit {
   }
 
   getReferenceDetails(selectedOption: ReferenceOption) {
+    this.refDetails = undefined;
     this.referenceService.getRefDetails(selectedOption.uuid).subscribe(
       (data: IReference) => this.refDetails = data,
       (err: any) => {
         this.errorService.showError(err.message);
         console.log(err);
-      },
-      () => console.log(this.refDetails)
+      }
     );
   }
 

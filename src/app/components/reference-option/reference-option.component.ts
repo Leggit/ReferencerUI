@@ -36,24 +36,25 @@ export class ReferenceOptionComponent implements OnInit {
     );
 
     if (this.refOptions?.length > 0) {
-      this.optionSelect.setValue(this.refOptions[0]?.name);
+      this.optionSelect.setValue(this.refOptions[0]);
       this.optionSelect.updateValueAndValidity()
-      this.emitSelection(this.refOptions[0].name);
+      this.emitSelection(this.refOptions[0]);
     }
   }
 
-  emitSelection(option: string): void {
+  emitSelection(option: ReferenceOption | string): void {
     this.invalidSelection = false;
 
-    // If there are reference options with duplicate names this method will be problematic
-    const selected = this.refOptions?.filter(
-      (opt) => opt.name.toLowerCase() === option?.toLowerCase()
-    );
-
-    if (selected?.length === 1) {
-      this.optionSelected.emit(selected[0]);
+    if(typeof option === 'string') {
+      const filtered = this.filterRefOptions(option)
+      
+      if(filtered.length === 1) {
+        this.optionSelected.emit(filtered[0])
+      } else {
+        this.invalidSelection = true
+      }
     } else {
-      this.invalidSelection = true;
+      this.optionSelected.emit(option);
     }
   }
 
@@ -61,5 +62,9 @@ export class ReferenceOptionComponent implements OnInit {
     return this.refOptions?.filter((option) =>
       option.name.toLowerCase().includes(value.toLowerCase())
     );
+  }
+
+  displayFn(option: ReferenceOption): string {
+    return option && option.name ? option.name : '';
   }
 }
