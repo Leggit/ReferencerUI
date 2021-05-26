@@ -7,17 +7,17 @@
             [matAutocomplete]="auto" />
         <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
             autoActiveFirstOption [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredRefOptions | async" [value]="option">
+            <mat-option *ngFor="let option of filteredRefOptions" [value]="option">
                 {{ option.name }}
             </mat-option>
         </mat-autocomplete>
-        <button mat-button *ngIf="optionSelect.value" matSuffix mat-icon-button aria-label="Clear" (click)="optionSelect.setValue('')">
+        <button mat-button *ngIf="optionSelect.value" matSuffix mat-icon-button aria-label="Clear" (click)="reset()">
             <mat-icon>close</mat-icon>
         </button>
     </mat-form-field>
 
     <div class="d-flex col-lg-2 col-md-2 col-12 mt-auto mb-auto">
-        <button mat-raised-button class="col-2 col-md-12 col-lg-12" color="accent" [disabled]="!optionSelect.value">
+        <button mat-raised-button class="col-2 col-md-12 col-lg-12" color="accent" [disabled]="! (optionSelect.value?.toString().length > 0)">
             Go
         </button>
     </div>

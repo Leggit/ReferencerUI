@@ -16,26 +16,27 @@ import { ReferenceOption } from 'src/app/models/reference-option.model';
   selector: 'app-reference-option',
   templateUrl: './reference-option.component.html',
   styleUrls: ['./reference-option.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReferenceOptionComponent implements OnInit {
   @Output() optionSelected: EventEmitter<ReferenceOption> = new EventEmitter();
   @Input() refOptions: ReferenceOption[] = [];
-  filteredRefOptions!: Observable<ReferenceOption[]>;
+  filteredRefOptions: ReferenceOption[] = [];
   optionSelect: FormControl = new FormControl();
   invalidSelection = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.filteredRefOptions = this.refOptions
+    this.optionSelect.valueChanges.subscribe(
+      (value: ReferenceOption | string) => {
+        this.filteredRefOptions = this.filterRefOptions(typeof value === 'string' ? value : value.name)
+      }
+    )
+  }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.filteredRefOptions = this.optionSelect.valueChanges.pipe(
-      startWith(''),
-      map((value) => this.filterRefOptions(value.name ? value.name : value))
-    );
-
-    if (this.refOptions?.length > 0) {
+  ngOnChanges(changes?: SimpleChanges): void {
+    if (this.refOptions?.length > 0 && changes) {
       this.optionSelect.setValue(this.refOptions[0]);
       this.optionSelect.updateValueAndValidity()
       this.emitSelection(this.refOptions[0]);
@@ -53,6 +54,7 @@ export class ReferenceOptionComponent implements OnInit {
         this.optionSelected.emit(matches[0])
       }
       else if(filtered.length === 1) {
+        this.optionSelect.setValue(filtered[0])
         this.optionSelected.emit(filtered[0])
       } else {
         this.invalidSelection = true
@@ -63,13 +65,21 @@ export class ReferenceOptionComponent implements OnInit {
   }
 
   filterRefOptions(value: string): ReferenceOption[] {
+    if(value === "") {
+      return this.refOptions
+    }
+
     const filtered = this.refOptions?.filter((option) =>
       option.name.toLowerCase().includes(value.toLowerCase())
     );
 
-    return filtered.sort(
+    return filtered?.sort(
       (a, b) => a.name.length - b.name.length
     )
+  }
+
+  reset() {
+    this.optionSelect.setValue(" ")
   }
 
   displayFn(option: ReferenceOption): string {
