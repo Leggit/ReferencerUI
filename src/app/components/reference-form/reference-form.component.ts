@@ -12,6 +12,7 @@ export class ReferenceFormComponent implements OnInit {
 
   @Input() refDetails!: IReference;
   @Output() formSubmit: EventEmitter<IReference> = new EventEmitter<IReference>()
+  @Output() formReset: EventEmitter<any> = new EventEmitter<any>();
   form!: FormGroup;
 
   constructor(private inputControlService: FormControlService) { 
@@ -19,6 +20,10 @@ export class ReferenceFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.inputControlService.toFormGroup(this.refDetails.fields);
+  }
+
+  onReset(event?: any): void {
+    this.formReset.emit()
   }
 
   onSubmit(event: any) {

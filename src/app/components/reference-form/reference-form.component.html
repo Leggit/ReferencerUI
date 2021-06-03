@@ -3,6 +3,6 @@
 
     <div class="mb-2 col-12">
         <button [color]="form.valid ? 'accent' : ''" mat-raised-button (click)="onSubmit($event)" class="mr-2">Go</button>
-        <button color="warn" mat-raised-button type="reset">Clear</button>
+        <button color="warn" mat-raised-button (click)="onReset($event)" type="reset">Clear</button>
     </div>
 </form>

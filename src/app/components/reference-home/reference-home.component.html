@@ -9,7 +9,7 @@
     <section class="shadow bg-dark p-3 mb-3 col-12">
         <h2 class="col-12">Reference details</h2>
         <mat-spinner *ngIf="!refDetails" class="m-auto"></mat-spinner>
-        <app-reference-form *ngIf="refDetails" [refDetails]="refDetails" (formSubmit)="genarateReference($event)"></app-reference-form>
+        <app-reference-form *ngIf="refDetails" [refDetails]="refDetails" (formSubmit)="genarateReference($event)" (formReset)="refOutput = ''"></app-reference-form>
     </section>
 
     <section class="shadow bg-dark p-3 mb-3 col-12">
