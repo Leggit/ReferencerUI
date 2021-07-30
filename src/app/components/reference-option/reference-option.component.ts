@@ -65,7 +65,9 @@ export class ReferenceOptionComponent implements OnInit {
   }
 
   filterRefOptions(value: string): ReferenceOption[] {
+    console.log("op")
     if(value === "") {
+      console.log("VALUE EMPTY")
       return this.refOptions
     }
 
@@ -79,7 +81,7 @@ export class ReferenceOptionComponent implements OnInit {
   }
 
   reset() {
-    this.optionSelect.setValue(" ")
+    this.optionSelect.reset("")
   }
 
   displayFn(option: ReferenceOption): string {
