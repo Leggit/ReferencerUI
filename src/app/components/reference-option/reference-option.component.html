@@ -1,24 +1,10 @@
-<form class="row" (submit)="emitSelection(optionSelect.value)">
-    <mat-form-field class="col-lg-10 col-md-10 col-12 ref-option" color="accent">
-        <mat-label [ngClass]="invalidSelection ? 'text-danger' : ''">
-            Reference Type {{ invalidSelection ? ' - Please Make a valid selection' : '' }}
-        </mat-label>
-        <input type="text" class="mt-2" placeholder="start typing..." matInput [formControl]="optionSelect"
-            [matAutocomplete]="auto" />
-        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="emitSelection(optionSelect.value)"
-            autoActiveFirstOption [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredRefOptions" [value]="option">
-                {{ option.name }}
+<div class="row pl-3 pr-3">
+    <mat-form-field class="col-12 ref-option" color="accent">
+        <mat-label>Select a reference type</mat-label>
+        <mat-select [formControl]="optionSelect" (selectionChange)="onSelectionChange()">
+            <mat-option *ngFor="let option of refOptions | optionSort" [value]="option">
+              {{option.name}}
             </mat-option>
-        </mat-autocomplete>
-        <button mat-button *ngIf="optionSelect.value" matSuffix mat-icon-button aria-label="Clear" (click)="reset()">
-            <mat-icon>close</mat-icon>
-        </button>
+        </mat-select>
     </mat-form-field>
-
-    <div class="d-flex col-lg-2 col-md-2 col-12 mt-auto mb-auto">
-        <button mat-raised-button class="col-2 col-md-12 col-lg-12" color="accent" [disabled]="! (optionSelect.value?.toString().length > 0)">
-            Go
-        </button>
-    </div>
-</form>
+</div>

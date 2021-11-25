@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReferenceOutputComponent } from './components/reference-output/reference-output.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ErrorComponent } from './components/error/error.component';
+import { OptionSortPipe } from './pipes/option-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ErrorComponent } from './components/error/error.component';
     ReferenceFormComponent,
     FieldComponent,
     ErrorComponent,
+    OptionSortPipe,
   ],
   imports: [
     BrowserModule,
