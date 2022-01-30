@@ -36,7 +36,7 @@ export class ConcatService {
         }
       }
 
-      if(field.type === FieldType.URL) {
+      if (field.type === FieldType.URL) {
         field.value = `<a href="${field.value}">${field.value}</a>`;
       }
 

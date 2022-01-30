@@ -1,3 +1,6 @@
 .ref-output {
     min-height: 75px;
 }
+.overflow-wrap {
+  overflow-wrap: anywhere;
+}
