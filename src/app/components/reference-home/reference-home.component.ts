@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import {catchError, map, shareReplay} from 'rxjs/operators';
 import { ReferenceOption } from 'src/app/models/reference-option.model';
 import { IReference } from 'src/app/models/reference.model';
 import { ConcatService } from 'src/app/services/concat.service';
 import { ErrorService } from 'src/app/services/error.service';
 import { ReferenceService } from 'src/app/services/reference.service';
+import {Observable, of} from 'rxjs';
 
 @Component({
   selector: 'app-reference-home',
@@ -13,7 +14,7 @@ import { ReferenceService } from 'src/app/services/reference.service';
 })
 export class ReferenceHomeComponent implements OnInit {
 
-  refOptions!: ReferenceOption[];
+  refOptions!: Observable<ReferenceOption[]>;
   refDetails?: IReference;
   refOutput = "";
 
@@ -21,17 +22,18 @@ export class ReferenceHomeComponent implements OnInit {
     private readonly referenceService: ReferenceService,
     private readonly concatService: ConcatService,
     private readonly errorService: ErrorService
-  ) { 
+  ) {
+    this.refOptions = this.referenceService.getRefOptions().pipe(
+      shareReplay(1),
+      catchError(err => {
+        this.errorService.showError(err.message);
+        console.log(err);
+        return of(err);
+      }),
+    );
   }
 
   ngOnInit(): void {
-    this.referenceService.getRefOptions().subscribe(
-      (data: any) => this.refOptions = data,
-      (err: any) => {
-        this.errorService.showError(err.message);
-        console.log(err);
-      },
-    )
   }
 
   getReferenceDetails(selectedOption: ReferenceOption) {

@@ -6,8 +6,8 @@ import { ReferenceOption } from '../models/reference-option.model';
 })
 export class OptionSortPipe implements PipeTransform {
 
-  transform(refOptions: ReferenceOption[]): ReferenceOption[] {
-    return refOptions.sort((a,b) => a.name.localeCompare(b.name));
+  transform(refOptions: ReferenceOption[] | null): ReferenceOption[] {
+    return refOptions?.sort((a,b) => a.name.localeCompare(b.name)) ?? [];
   }
 
 }

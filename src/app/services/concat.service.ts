@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IReference } from '../models/reference.model';
+import {FieldType, IReference} from '../models/reference.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +8,11 @@ export class ConcatService {
 
   constructor() { }
 
-  genarateReference(reference: IReference) {
-    var referenceText: string = "";
+  genarateReference(reference: IReference): string {
+    let referenceText = "";
 
     reference.fields.forEach((field) => {
-      var formattedText = "";
+      let formattedText = "";
 
       if(!field.required && !field.value) {
         return;
@@ -36,13 +36,17 @@ export class ConcatService {
         }
       }
 
+      if(field.type === FieldType.URL) {
+        field.value = `<a href="${field.value}">${field.value}</a>`;
+      }
+
       formattedText = (field.prefix ? field.prefix : "") + (field.value ? field.value : "") + (field.suffix ? field.suffix : "");
 
       if(field.italic) {
         formattedText = "<em>" + formattedText + "</em>";
       }
 
-      referenceText = referenceText + (formattedText ? formattedText : "")
+      referenceText = referenceText + (formattedText ? formattedText : "");
     });
 
     return referenceText;

@@ -13,8 +13,15 @@ export interface IField {
     placeholder: string;
     prefix: string;
     suffix: string;
-    type: string;
+    type: FieldType;
     dateFormat?: string;
     required: boolean;
     italic: boolean;
+}
+
+export enum FieldType {
+  TEXT = "text",
+  DATE = "date",
+  NUMBER = "number",
+  URL = "url"
 }
