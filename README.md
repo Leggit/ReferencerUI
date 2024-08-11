@@ -1,13 +1,17 @@
-# UswReferencer
+# Referencer
 
-Front end for a reference genarating tool.
-Will soon be accessible on http://stfn.uk/usw/referencing
-The backend application can be found here https://github.com/StephPT/stfn-api
+This application was created in order to help generate references in accordance with the University of South Wales' harvard referencing guide.
+It uses Angular, MaterialUI and Bootstrap.
+It used to be connected to a backend that provided reference data, but this is no longer the case - it is instead pre-loaded with a limit set of reference types.
 
-## Development server
+This app is not official, it is just a project created by two students of their own accord, to help them create references faster and more accurately.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Running and building
 
-## Build
+Due to lack of maintenance the dependencies in this app are very outdated. Docker has been used as a lazy way around this as it allows older nodejs versions to be used during the build process.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+To build the docker container run: `docker build -t angular-build .`
+
+To run the docker container (which builds the Angular app) run: `docker run --name angular-build-container angular-build`
+
+To copy out the dist folder from the container run: `docker cp angular-build-container:/usr/src/app/dist ./dist`
